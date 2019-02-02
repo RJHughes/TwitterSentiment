@@ -1,5 +1,4 @@
-# Flask-Dash
-A short example showing how Flask could be used as a backend web server for the Twitter application.
+# Twitter Sentiment analysis
 
 To run the app, you'll need to have flask available in your environment. 
 
@@ -12,3 +11,5 @@ If you then navigate to the folder containing app.py, you can run
 `flask run`
 
 To run the site locally
+
+Other dependencies for the data analysis can be installed from the requirements.txt file
