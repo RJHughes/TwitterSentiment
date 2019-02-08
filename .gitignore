@@ -1,4 +1,7 @@
 twit
 database
+*.tar
+*.idea
+*-checkpoint.ipynb
 2017
 __pycache__/
