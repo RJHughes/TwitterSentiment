@@ -11,8 +11,12 @@ import numpy as np
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'agile'
 
+
+
 @app.route('/', methods=['GET', 'POST'])
 def search():
+    date_list = []
+    sentiment_list = []
     form = Search()
     if request.method == 'POST':
         search=request.form['search']
@@ -65,4 +69,4 @@ def search():
         for key in sorted(date_dict):
             date_list.append(key), sentiment_list.append(date_dict[key])
 
-        return render_template('hello.html', form=form, labels=date_list, values=sentiment_list)
+    return render_template('hello.html', form=form, labels=date_list, values=sentiment_list)
