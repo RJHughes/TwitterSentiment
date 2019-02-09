@@ -1,8 +1,8 @@
 
 
-for folder in 2017/11/01/*/; do
-	for filename in $folder*.bz2; do 
-		bunzip2 $filename -d
-		echo $filename
-	done
+for d in */ ; do
+for i in {10..17}; do
+	tar xvf twitter-stream-2017-11-$i.tar
+	rm  twitter-stream-2017-11-$i.tar
+done
 done
