@@ -73,4 +73,4 @@ def search():
         for key in sorted(date_dict):
             date_list.append(key), sentiment_list.append(date_dict[key])
 
-    return render_template('hello.html', form=form, labels=date_list, values=sentiment_list, title=search)
+    return render_template('index.html', form=form, labels=date_list, values=sentiment_list, title=search)
