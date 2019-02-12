@@ -21,7 +21,10 @@ def search():
     form = Search()
     if request.method == 'POST':
         search=request.form['search']
-        print(search)
+
+        if '-' in search[0]:
+            print('uh oh')
+            return render_template('search.html')
 
         db= create_large_db('database/large-11-17.db')
 
