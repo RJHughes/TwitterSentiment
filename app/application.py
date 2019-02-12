@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import render_template, request, flash
-from app.forms import Search
-from app.db_builder import create_large_db
+from forms import Search
+from db_builder import create_large_db
 import pandas as pd
 import datetime
 import time

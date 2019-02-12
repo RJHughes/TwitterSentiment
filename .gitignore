@@ -5,3 +5,8 @@ database
 *-checkpoint.ipynb
 2017
 __pycache__/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
