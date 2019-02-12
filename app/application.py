@@ -8,12 +8,11 @@ import time
 import numpy as np
 
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'agile'
+application = Flask(__name__)
+application.config['SECRET_KEY'] = 'agile'
 
 
-
-@app.route('/', methods=['GET', 'POST'])
+@application.route('/', methods=['GET', 'POST'])
 def search():
     date_list = []
     sentiment_list = []
