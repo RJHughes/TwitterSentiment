@@ -98,52 +98,71 @@
 <h1>{{ title }}</h1>
 <div class="container">
 
-<canvas id="chart"></canvas>
-<script>
-  // bar chart data
-  var chartData = {
-    labels : [
-      {% for item in labels %}
-       "{{ item }}",
-      {% endfor %}
-],
-    datasets : [{
-      fillColor: "rgba(255,0,0,0.2)",
-      strokeColor: "rgba(255,0,0,1)",
-      pointColor: "rgba(255,0,0,1)",
-      backgroundColor: "rgba(255,0,0,0.5)",
-      label: "{{ title }}",
-      data : [
-        {% for item in values %}
-           "{{ item }}",
-          {% endfor %}
-  ]
-      }
-    ]
-  }
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item">
+        <h1>"HREEE"</h1>
+      </div>
+      <div class="carousel-item active">
+        <div class="container">
+        <canvas id="chart"></canvas>
+        <script>
+          // bar chart data
+          var chartData = {
+            labels : [
+              {% for item in labels %}
+               "{{ item }}",
+              {% endfor %}
+            ],
+            datasets : [{
+              fillColor: "rgba(255,0,0,0.2)",
+              strokeColor: "rgba(255,0,0,1)",
+              pointColor: "rgba(255,0,0,1)",
+              backgroundColor: "rgba(255,0,0,0.5)",
+              label: "{{ title }}",
+              data : [
+                {% for item in values %}
+                   "{{ item }}",
+                  {% endfor %}
+          ]
+              }
+            ]
+          }
 
- // get bar chart canvas
- var mychart = document.getElementById("chart").getContext("2d");
-   steps = 10
-   max = 3
- // draw bar chart
- new Chart(mychart, {
-   type: 'bar',
-   data: chartData,
-     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    suggestedMin: -0.2,
-                    suggestedMax: 0.2
+         // get bar chart canvas
+         var mychart = document.getElementById("chart").getContext("2d");
+           steps = 10
+           max = 3
+         // draw bar chart
+         new Chart(mychart, {
+           type: 'bar',
+           data: chartData,
+             options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            suggestedMin: -0.2,
+                            suggestedMax: 0.2
+                        }
+                    }]
                 }
-            }]
-        }
-    }
- });
+            }
+         });
 
 
-</script>
+        </script>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="false"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
 </div>
 
 </div>
