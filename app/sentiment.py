@@ -42,4 +42,4 @@ def get_sentiment(query):
     for key in sorted(date_dict):
         date_list.append(key), sentiment_list.append(date_dict[key])
 
-    return date_list, sentiment_list
+    return date_list, sentiment_list, count_dict

@@ -38,6 +38,6 @@ def search():
         end = time.time()
         print(end - start)
 
-        date_list, sentiment_list = get_sentiment(query)
+        date_list, sentiment_list, count_dict = get_sentiment(query)
 
     return render_template('index.html', form=form, labels=date_list, values=sentiment_list, title=search)
