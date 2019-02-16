@@ -25,7 +25,7 @@ def search():
             print('uh oh')
             return render_template('search.html')
 
-        db= create_large_db('database/large-11-17.db')
+        db= create_large_db('app/database/large-11-17.db')
 
         # This block demonstrates how to query the database
         start = time.time()

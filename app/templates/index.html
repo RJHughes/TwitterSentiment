@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     <link rel="stylesheet" type="text/css" href="static/css/main.css">
 </head>
-
+<body>
 <!-- Top navigation -->
 <div class="topnav">
 
@@ -34,8 +34,7 @@
 
 </div>
 
-
-<div class="pt-4 container">
+<div class="container pt-4">
   <form role ="form", class="form-horizontal", action="" method="post" role="form" novalidate>
     {{ form.hidden_tag() }}
     <div class="form-row">
@@ -95,18 +94,19 @@
       </div>
     </div>
   </form>
-<h1>{{ title }}</h1>
-<div class="container">
-
+</div>
+  <div class="container-fluid">
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item">
+        <div class="container">
         <h1>"HREEE"</h1>
+        </div>
       </div>
       <div class="carousel-item active">
         <div class="container">
-        <canvas id="chart"></canvas>
-        <script>
+          <canvas id="chart"></canvas>
+          <script>
           // bar chart data
           var chartData = {
             labels : [
