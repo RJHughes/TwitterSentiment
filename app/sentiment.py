@@ -11,6 +11,7 @@ def get_sentiment(query):
     date_dict = {}
     count_dict = {}
     hash_dict = {}
+    hash_list = []
     fav_max = 0
 
     for entry in query:
@@ -21,9 +22,9 @@ def get_sentiment(query):
             for tags in hashtags:
                 tags = dict(tags)
                 if tags['text'] in hash_dict:
-                    hash_dict[tags['text']] =  hash_dict[tags['text']] + 1
+                    hash_dict[tags['text']] =  hash_dict[tags['text']] + 100
                 else:
-                    hash_dict[tags['text']] = 1
+                    hash_dict[tags['text']] = 100 + len(tags['text'])*10
 
         # We need to remove the timezone, day and hour data
         temp_date = entry.created_at.split()
@@ -53,5 +54,7 @@ def get_sentiment(query):
     for key in sorted(date_dict):
         date_list.append(key), sentiment_list.append(date_dict[key])
 
-    
-    return date_list, sentiment_list, count_dict, hash_dict
+    for items in hash_dict:
+        hash_list.append([items,hash_dict[items]])
+
+    return date_list, sentiment_list, count_dict, hash_list

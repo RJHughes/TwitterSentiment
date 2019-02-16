@@ -14,6 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src=static/js/wordcloud2.js></script>
 
     <!-- Bootstrap Date-Picker Plugin -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
@@ -110,7 +111,13 @@
     <div class="carousel-inner">
       <div class="carousel-item">
         <div class="container">
-        <h1>"HREEE"</h1>
+          <canvas id="my_canvas"></canvas>
+
+          <script>
+            var input = JSON.parse({{ hash_list|tojson }});
+            console.log(input)
+            WordCloud(document.getElementById('my_canvas'),  {list: input });
+        </script>
         </div>
       </div>
       <div class="carousel-item active">

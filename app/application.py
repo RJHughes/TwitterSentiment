@@ -4,6 +4,7 @@ from app.forms import Search
 from app.db_builder import create_large_db
 from app.sentiment import get_sentiment
 import pandas as pd
+import json
 import datetime
 import time
 import numpy as np
@@ -43,6 +44,7 @@ def search():
         end = time.time()
         print(end - start)
 
-        date_list, sentiment_list, count_dict, hash_dict = get_sentiment(query)
-
-    return render_template('index.html', form=form, labels=date_list, values=sentiment_list, title=search)
+        date_list, sentiment_list, count_dict, hash_list = get_sentiment(query)
+        #hash_list = [['foo',120], ['bar',60]]
+        print(hash_list)
+    return render_template('index.html', form=form, labels=date_list, values=sentiment_list, title=search, hash_list=json.dumps(hash_list))
