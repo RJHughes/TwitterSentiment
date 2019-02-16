@@ -19,6 +19,7 @@ application.config['SECRET_KEY'] = 'agile'
 def search():
     date_list = []
     sentiment_list = []
+    hash_list = []
     search=''
     form = Search()
     if request.method == 'POST':
