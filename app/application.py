@@ -33,7 +33,7 @@ def search():
         # Chooses
         if os.environ['USER'] == 'ec2-user':
             db= create_large_db('app/database/test.db')
-        else
+        else:
             db= create_large_db('app/database/test.db')
 
 
