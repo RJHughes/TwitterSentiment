@@ -30,11 +30,8 @@ def search():
             print('uh oh')
             return render_template('search.html')
 
-        # Chooses
-        if os.environ['USER'] == 'ec2-user':
-            db= create_large_db('app/database/test.db')
-        else:
-            db= create_large_db('app/database/test.db')
+
+        db= create_large_db('app/database/test.db')
 
 
         # This block performs a query on the text field of the db and looks
