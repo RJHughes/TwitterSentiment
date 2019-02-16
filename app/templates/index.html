@@ -14,6 +14,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     <link rel="stylesheet" type="text/css" href="static/css/main.css">
 </head>
 
@@ -31,12 +35,65 @@
 </div>
 
 
-<div class="pt-4 container-fluid">
-    <form action="" method="post" role="form" novalidate>
-      {{ form.hidden_tag() }}
-    <div class="form-group">
-      <input type="text" class="form-control" id="name" name="search" placeholder="Enter words, phrases or hashtags"></div>
-      <button type="submit" class="btn btn-success">Search</button>
+<div class="pt-4 container">
+  <form role ="form", class="form-horizontal", action="" method="post" role="form" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="form-row">
+      <div class="form-group col-sm-11">
+        <input type="text" class="form-control" id="fullSearch" name="search" placeholder="Enter words, phrases or hashtags">
+      </div>
+      <div class="form-group col">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+    <div class = "form-row">
+      <div class="form-group col-sm-3">
+        <label class="control-label" for="date">Select Starting Date</label>
+        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+      </div>
+      <script>
+          $(document).ready(function(){
+            var date_input=$('input[name="date"]'); //our date input has the name "date"
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            var options={
+              format: 'mm/dd/yyyy',
+              container: container,
+              todayHighlight: true,
+              autoclose: true,
+            };
+            date_input.datepicker(options);
+          })
+      </script>
+      <div class="form-group col-sm-3">
+        <label class="control-label" for="date">Select End Date</label>
+        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+      </div>
+      <script>
+          $(document).ready(function(){
+            var date_input=$('input[name="date"]'); //our date input has the name "date"
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            var options={
+              format: 'mm/dd/yyyy',
+              container: container,
+              todayHighlight: true,
+              autoclose: true,
+            };
+            date_input.datepicker(options);
+          })
+      </script>
+      <div class="form-group col-sm-3">
+        <label for="dataset">Email</label>
+        <select class="form-control", id="dataset">
+          <option>Twitter</option>
+          <option>Facebook</option>
+          <option>Instagram</option>
+        </select>
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="user">Input a user</label>
+        <input type="text" class="form-control" id="user" placeholder="@ladygaga">
+      </div>
+    </div>
   </form>
 <h1>{{ title }}</h1>
 <div class="container">
