@@ -1,3 +1,5 @@
+import ast
+
 def get_sentiment(query):
     """ Given a query, this function returns the sentiment for the items in
     that query and returns the dates and sentiment for each date """
@@ -8,12 +10,21 @@ def get_sentiment(query):
     sentiment_array = []
     date_dict = {}
     count_dict = {}
+    hash_dict = {}
     fav_max = 0
 
     for entry in query:
         sentiment_array.append(entry.sentiment)
-        # if entry.urls is not None:
-        # print(entry.retweet_count)
+
+        hashtags = ast.literal_eval(entry.hashtags)
+        if len(hashtags)!=0:
+            for tags in hashtags:
+                tags = dict(tags)
+                if tags['text'] in hash_dict:
+                    hash_dict[tags['text']] =  hash_dict[tags['text']] + 1
+                else:
+                    hash_dict[tags['text']] = 1
+
         # We need to remove the timezone, day and hour data
         temp_date = entry.created_at.split()
 
@@ -31,8 +42,8 @@ def get_sentiment(query):
                                          (entry.sentiment - date_dict[formatted_date]) /
                                          count_dict[formatted_date])
         else:
-            count_dict[formatted_date] = 0
-            date_dict[formatted_date] = 0
+            count_dict[formatted_date] = 1
+            date_dict[formatted_date] = 1
 
     sorted_dates = sorted(count_dict)
 
@@ -42,4 +53,5 @@ def get_sentiment(query):
     for key in sorted(date_dict):
         date_list.append(key), sentiment_list.append(date_dict[key])
 
-    return date_list, sentiment_list, count_dict
+    
+    return date_list, sentiment_list, count_dict, hash_dict

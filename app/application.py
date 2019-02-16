@@ -7,6 +7,7 @@ import pandas as pd
 import datetime
 import time
 import numpy as np
+import os
 
 
 application = Flask(__name__)
@@ -23,11 +24,18 @@ def search():
         search=request.form['search']
 
         # Error handling for invalid search case
+        if search == '':
+            search = ' '
         if '-' in search[0]:
             print('uh oh')
             return render_template('search.html')
 
-        db= create_large_db('app/database/large-11-17.db')
+        # Chooses
+        if os.environ['USER'] == 'ec2-user':
+            db= create_large_db('app/database/test.db')
+        else
+            db= create_large_db('app/database/test.db')
+
 
         # This block performs a query on the text field of the db and looks
         # for matches
@@ -38,6 +46,6 @@ def search():
         end = time.time()
         print(end - start)
 
-        date_list, sentiment_list, count_dict = get_sentiment(query)
+        date_list, sentiment_list, count_dict, hash_dict = get_sentiment(query)
 
     return render_template('index.html', form=form, labels=date_list, values=sentiment_list, title=search)
