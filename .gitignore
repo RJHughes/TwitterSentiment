@@ -10,3 +10,7 @@ __pycache__/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+ec2-user@3\.8\.234\.40
+
+rory@ec2-3-8-234-40\.eu-west-2\.compute\.amazonaws\.com
