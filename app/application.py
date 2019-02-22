@@ -3,6 +3,7 @@ from flask import render_template, request, flash
 from app.forms import Search
 from app.db_builder import create_large_db
 from app.sentiment import get_sentiment
+from app.wordcloud_gen import create_wordcloud
 import pandas as pd
 import json
 import datetime
@@ -20,6 +21,7 @@ def search():
     date_list = []
     sentiment_list = []
     hash_list = []
+    img_handle=[]
     search=''
     form = Search()
     if request.method == 'POST':
@@ -47,7 +49,6 @@ def search():
 
         date_list, sentiment_list, count_dict, hash_list = get_sentiment(query)
         #hash_list = [['foo',120], ['bar',60]]
+        img_handle = create_wordcloud(hash_list)
 
-        hash_list = hash_list[0]
-        print(hash_list)
-    return render_template('index.html', form=form, labels=date_list, values=sentiment_list, title=search, hash_list=json.dumps(hash_list))
+    return render_template('index.html', form=form, labels=date_list, values=sentiment_list, title=search, hash_list=json.dumps(hash_list),handle=img_handle)
