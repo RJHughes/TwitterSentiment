@@ -7,7 +7,7 @@
 }
 
 .carousel-control-prev .carousel-control-prev-icon,
-.carousel-control-next .carousel-control-next-icon {
+.carousel-control-next .carousel-control-next-icon{
     width: 200px;
     height: 200px;
     filter: invert(100%);
@@ -17,6 +17,7 @@
 .carousel-control-next .carousel-control-next-icon:before{
     font-size: 200px;
 }
+
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
@@ -56,6 +57,7 @@ p.SentiTweets {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 /* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
 @media screen and (max-width: 600px) {
   .topnav a, .topnav-right {

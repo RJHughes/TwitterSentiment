@@ -24,7 +24,7 @@ def get_sentiment(query):
                 if tags['text'] in hash_dict:
                     hash_dict[tags['text']] =  hash_dict[tags['text']] + 100
                 else:
-                    hash_dict[tags['text']] = 100 + len(tags['text'])*10
+                    hash_dict[tags['text']] = 100
 
         # We need to remove the timezone, day and hour data
         temp_date = entry.created_at.split()

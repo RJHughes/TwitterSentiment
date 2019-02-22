@@ -47,5 +47,7 @@ def search():
 
         date_list, sentiment_list, count_dict, hash_list = get_sentiment(query)
         #hash_list = [['foo',120], ['bar',60]]
+
+        hash_list = hash_list[0]
         print(hash_list)
     return render_template('index.html', form=form, labels=date_list, values=sentiment_list, title=search, hash_list=json.dumps(hash_list))
