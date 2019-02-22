@@ -2,6 +2,7 @@ from os import path, getcwd
 from PIL import Image
 import numpy as np
 from wordcloud import WordCloud, ImageColorGenerator
+import os, re
 
 def create_wordcloud(data):
 
@@ -22,6 +23,12 @@ def create_wordcloud(data):
         relative_scaling=1,
         normalize_plurals=False
     ).generate_from_frequencies(d)
+
+
+    for f in os.listdir("app/static/pictures/"):
+        print(f)
+        if re.search("wordcloud0", f):
+            os.remove(os.path.join("app/static/pictures/", f))
 
     handle = str(np.random.rand(1)[0])
 
