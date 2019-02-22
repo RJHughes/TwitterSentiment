@@ -3,6 +3,9 @@ database
 *.tar
 *.idea
 *-checkpoint.ipynb
+*.pyc
+*.png
+
 2017
 __pycache__/
 
