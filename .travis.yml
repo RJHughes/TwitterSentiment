@@ -4,8 +4,8 @@ python: 3.5
 install:
   pip3 install -r requirements.txt
 
-before_script:
-  - "export FLASK_APP=app/application.py"
-  - flask run
+#before_script:
+#  - "export FLASK_APP=app/application.py"
+#  - flask run
 
 script: python -m unittest discover tests "TEST*"
