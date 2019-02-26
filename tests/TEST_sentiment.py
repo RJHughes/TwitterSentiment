@@ -27,5 +27,17 @@ class SentimentTest(unittest.TestCase):
 
     def test_sentiment_returns(self):
         for sentiment in self.sentiment_list:
-            self.assertGreaterEqual(sentiment,-1)
-            self.assertLessEqual(sentiment,1)
+            self.assertIs(type(sentiment),float,'Sentiment must be a float')
+            self.assertGreaterEqual(sentiment,-1,'Sentiment must be greater or equal to -1')
+            self.assertLessEqual(sentiment,1,'Sentiment must be less than or equal to 1')
+
+    def test_count_dict(self):
+        for counts in self.count_dict:
+            self.assertIs(type(self.count_dict[counts]),int)
+            self.assertGreaterEqual(self.count_dict[counts],0)
+
+    def test_hash_list(self):
+        for hashtags in self.hash_list:
+            self.assertIs(type(hashtags),list)
+            self.assertIs(type(hashtags[0]),str)
+            self.assertIs(type(hashtags[1]),int)
