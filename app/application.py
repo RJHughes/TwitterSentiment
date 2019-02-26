@@ -18,8 +18,6 @@ application.config['SECRET_KEY'] = 'agile'
 def handle_search_errors(search):
     """ Error handling for invalid search cases. Returns a default page on error """
 
-    if search == '':
-        search = ' '
     if '-' in search[0]:
         print('Invalid search params entered')
         return render_template('search.html')
@@ -38,15 +36,22 @@ def get_query(search, db):
 if __name__ == '__main__':
     @application.route('/', methods=['GET', 'POST'])
     def search():
-
-        # Initialise variables
+        """ Renders the main page with data based on a user input search """
+        # List of dates from search
         date_list = []
+        # Sentiment for each date
         sentiment_list = []
+        # Hashtag list from search
         hash_list = []
+        # Image handle to allow unique images
         img_handle=[]
-        search=''
+        # Default search
+        search=' '
+        # Init form object
         form = Search()
 
+        # If the user sends an HTTP POST request, this means that a search has
+        # been done and the program needs to act
         if request.method == 'POST':
             search=request.form['search']
             handle_search_errors(search)
