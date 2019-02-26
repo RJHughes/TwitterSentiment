@@ -6,6 +6,6 @@ install:
 
 before_script:
   - "export FLASK_APP=app/applicatin.py"
-  - flask run &
+  - flask run
 
 script: python -m unittest discover tests "TEST*"
