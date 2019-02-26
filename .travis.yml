@@ -9,4 +9,4 @@ before_script:
   - "export FLASK_APP=app/application.py"
   - flask run &
 
-script: python -m unittest discover tests "TEST*"
+script: python -m unittest discover tests "TEST_server_*"
