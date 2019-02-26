@@ -15,6 +15,40 @@ import os
 application = Flask(__name__)
 application.config['SECRET_KEY'] = 'agile'
 
+@application.route('/', methods=['GET', 'POST'])
+def search():
+    """ Renders the main page with data based on a user input search """
+    # List of dates from search
+    date_list = []
+    # Sentiment for each date
+    sentiment_list = []
+    # Hashtag list from search
+    hash_list = []
+    # Image handle to allow unique images
+    img_handle=[]
+    # Default search
+    search=' '
+    # Init form object
+    form = Search()
+
+    # If the user sends an HTTP POST request, this means that a search has
+    # been done and the program needs to act
+    if request.method == 'POST':
+        search=request.form['search']
+        handle_search_errors(search)
+        db= create_large_db('app/database/test.db')
+        query = get_query(search, db)
+        date_list, sentiment_list, count_dict, hash_list = get_sentiment(query)
+        img_handle = create_wordcloud(hash_list)
+
+    return render_template('index.html',
+                            form=form,
+                            labels=date_list,
+                            values=sentiment_list,
+                            title=search,
+                            hash_list=json.dumps(hash_list),
+                            handle=img_handle)
+
 def handle_search_errors(search):
     """ Error handling for invalid search cases. Returns a default page on error """
 
@@ -34,36 +68,4 @@ def get_query(search, db):
     return query
 
 if __name__ == '__main__':
-    @application.route('/', methods=['GET', 'POST'])
-    def search():
-        """ Renders the main page with data based on a user input search """
-        # List of dates from search
-        date_list = []
-        # Sentiment for each date
-        sentiment_list = []
-        # Hashtag list from search
-        hash_list = []
-        # Image handle to allow unique images
-        img_handle=[]
-        # Default search
-        search=' '
-        # Init form object
-        form = Search()
-
-        # If the user sends an HTTP POST request, this means that a search has
-        # been done and the program needs to act
-        if request.method == 'POST':
-            search=request.form['search']
-            handle_search_errors(search)
-            db= create_large_db('app/database/test.db')
-            query = get_query(search, db)
-            date_list, sentiment_list, count_dict, hash_list = get_sentiment(query)
-            img_handle = create_wordcloud(hash_list)
-
-        return render_template('index.html',
-                                form=form,
-                                labels=date_list,
-                                values=sentiment_list,
-                                title=search,
-                                hash_list=json.dumps(hash_list),
-                                handle=img_handle)
+    application.run()
