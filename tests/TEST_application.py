@@ -1,4 +1,6 @@
 import unittest
 import app.application
 
-print('we good')
+class AppTestCase(unittest.TestCase):
+    def test_something(self):
+        self.assertEqual(1,2-1)
