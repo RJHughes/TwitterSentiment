@@ -1,8 +1,11 @@
 numpy==1.16.1
 <<<<<<< HEAD
+<<<<<<< HEAD
 Pillow==5.4.1
 wordcloud==1.5.0
 =======
+=======
+>>>>>>> ddbe4b8c81ceaec9e58ee14d7704580cea0efa32
 oauthlib==3.0.1
 pandas==0.24.0
 pandocfilters==1.4.2
@@ -47,4 +50,7 @@ Werkzeug==0.14.1
 widgetsnbextension==3.4.2
 wordcloud==1.5.0
 WTForms==2.2.1
+<<<<<<< HEAD
 >>>>>>> cb290e16b352ff4310dc58ff5fe070a078c0a579
+=======
+>>>>>>> ddbe4b8c81ceaec9e58ee14d7704580cea0efa32
