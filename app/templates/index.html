@@ -138,12 +138,23 @@
                 strokeColor: "rgba(255,0,0,1)",
                 pointColor: "rgba(255,0,0,1)",
                 backgroundColor: "rgba(255,0,0,0.5)",
-                label: "{{ title }}",
+                label: "Positive Sentiment",
                 data : [
-                  {% for item in values %}
+                  {% for item in pos_values %}
                      "{{ item }}",
                     {% endfor %}
-            ]
+                    ]
+                },{
+                  fillColor: "rgba(0,0,255,0.2)",
+                  strokeColor: "rgba(0,0,255,1)",
+                  pointColor: "rgba(0,0,255,1)",
+                  backgroundColor: "rgba(0,0,255,0.5)",
+                  label: "Negative Sentiment ",
+                  data:[
+                    {% for item in neg_values %}
+                       "{{ item }}",
+                      {% endfor %}
+                    ]
                 }
               ]
             }
@@ -160,6 +171,7 @@
                  responsive: true,
                  maintainAspectRatio: false,
                   scales: {
+                      xAxes: [{ stacked: true }],
                       yAxes: [{
                           ticks: {
                               suggestedMin: -0.2,

@@ -25,7 +25,6 @@ def home():
 
 @application.route('/search', methods=['GET', 'POST'])
 def search():
-    print('looook')
     """ Renders the main page with data based on a user input search """
     # List of dates from search
     date_list = []
@@ -43,18 +42,18 @@ def search():
     # If the user sends an HTTP POST method, this means that a search has
     # been done and the program needs to act
     if request.method == 'POST':
-        print('here too!')
         search=request.form['search']
         handle_search_errors(search)
         db= create_large_db('app/database/test.db')
         query = get_query(search, db)
-        date_list, sentiment_list, count_dict, hash_list = get_sentiment(query)
+        date_list, pos_sentiment_list,neg_sentiment_list, count_dict, hash_list = get_sentiment(query)
         img_handle = create_wordcloud(hash_list)
 
     return render_template('index.html',
                             form=form,
                             labels=date_list,
-                            values=sentiment_list,
+                            pos_values=pos_sentiment_list,
+                            neg_values=neg_sentiment_list,
                             title=search,
                             hash_list=json.dumps(hash_list),
                             handle=img_handle)
