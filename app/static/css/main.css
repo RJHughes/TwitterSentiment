@@ -85,10 +85,6 @@ footer {
    display: flex;
 }
 
-body {
-   margin-bottom: 50px;
-}
-
 footer a {
   float: center;
   color: #f2f2f2;

@@ -63,6 +63,7 @@ def get_sentiment(query):
     date_list = []
     pos_sentiment_list = []
     neg_sentiment_list = []
+    total_search = []
 
     for key in sorted(pos_sent_dict):
         date_list.append(key), \
@@ -72,7 +73,22 @@ def get_sentiment(query):
         if key not in date_list: date_list.append(key)
         neg_sentiment_list.append(neg_sent_dict[key]), \
 
+    for key in sorted(date_list):
+        pos_cont = 0
+        neg_cont = 0
+
+        if key in pos_count_dict:
+            pos_cont = pos_count_dict[key]
+        if key in neg_count_dict:
+            neg_cont = neg_count_dict[key]
+
+        total_search.append(pos_cont+neg_cont)
+
     for items in hash_dict:
         hash_list.append([items,hash_dict[items]])
+    print(total_search)
+    print(neg_count_dict)
+    print(pos_count_dict)
+    print(sorted(date_list))
 
-    return date_list, pos_sentiment_list, neg_sentiment_list, pos_count_dict, hash_list
+    return date_list, pos_sentiment_list, neg_sentiment_list, total_search, hash_list
