@@ -31,16 +31,17 @@
   </div>
 
   <!-- Left-aligned links (default) -->
-  <a href="#news">< Home</a>
+  <a href="/">< Home</a>
 
 </div>
 
+<!-- Search fields -->
 <div class="container pt-4">
-  <form role ="form", class="form-horizontal", action="" method="post" role="form" novalidate>
+  <form role ="form", class="form-horizontal", action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <div class="form-row">
       <div class="form-group col-sm-11">
-        <input type="text" class="form-control" id="fullSearch" name="search" placeholder="Enter words, phrases or hashtags">
+        <input type="text" class="form-control" id="searchForm"  name="search" placeholder="Enter words, phrases or hashtags">
       </div>
       <div class="form-group col">
         <button type="submit" class="btn btn-primary">Search</button>
@@ -82,7 +83,7 @@
           })
       </script>
       <div class="form-group col-sm-3">
-        <label for="dataset">Email</label>
+        <label for="dataset">Data source</label>
         <select class="form-control", id="dataset">
           <option>Twitter</option>
           <option>Facebook</option>
@@ -90,15 +91,16 @@
         </select>
       </div>
       <div class="form-group col-sm-3">
-        <label for="user">Input a user</label>
+        <label for="user">Username</label>
         <input type="text" class="form-control" id="user" placeholder="@ladygaga">
       </div>
     </div>
   </form>
 </div>
 
+<!-- Search details -->
 <div class ="container pt-4">
-<h2>{{title}}</h2>
+  <h2>{{title}}</h2>
   <!--<div class="card">
     <div class="card-body">
        <h4 class="card-title">{{title}}</h4>
@@ -106,7 +108,8 @@
   </div>-->
 </div>
 
-  <div class="container-fluid">
+<!-- Search result charts-->
+<div class="container-fluid" >
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval=false>
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -115,82 +118,151 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item">
-        <div class="container">
-          <!--<canvas id="my_canvas"></canvas>
-
-          <script>
-            var input = JSON.parse({{ hash_list|tojson }});
-            console.log(input)
-            WordCloud(document.getElementById('my_canvas'),  {list: input });
-        </script>-->
-
-
-        <img src ="{{"static/pictures/wordcloud" ~ handle ~".png"}}" style="width: 100%;" alt=wordcloud>
+        <div class="container" style="height: 500px">
+          <img src ="{{"static/pictures/wordcloud" ~ handle ~".png"}}" style="width: 100%;" alt=wordcloud>
         </div>
       </div>
       <div class="carousel-item active">
-        <div class="container">
+        <div class="container" style="height: 500px">
           <canvas id="chart"></canvas>
-          <script>
-          // bar chart data
-          var chartData = {
-            labels : [
-              {% for item in labels %}
-               "{{ item }}",
-              {% endfor %}
-            ],
-            datasets : [{
-              fillColor: "rgba(255,0,0,0.2)",
-              strokeColor: "rgba(255,0,0,1)",
-              pointColor: "rgba(255,0,0,1)",
-              backgroundColor: "rgba(255,0,0,0.5)",
-              label: "{{ title }}",
-              data : [
-                {% for item in values %}
-                   "{{ item }}",
-                  {% endfor %}
-          ]
-              }
-            ]
-          }
-
-         // get bar chart canvas
-         var mychart = document.getElementById("chart").getContext("2d");
-           steps = 10
-           max = 3
-         // draw bar chart
-         new Chart(mychart, {
-           type: 'bar',
-           data: chartData,
-             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            suggestedMin: -0.2,
-                            suggestedMax: 0.2
-                        }
-                    }]
+            <script>
+            // bar chart data
+            var chartData = {
+              labels : [
+                {% for item in labels %}
+                 "{{ item }}",
+                {% endfor %}
+              ],
+              datasets : [{
+                fillColor: "rgba(255,0,0,0.2)",
+                strokeColor: "rgba(255,0,0,1)",
+                pointColor: "rgba(255,0,0,1)",
+                backgroundColor: "rgba(255,0,0,0.5)",
+                label: "Positive Sentiment",
+                data : [
+                  {% for item in pos_values %}
+                     "{{ item }}",
+                    {% endfor %}
+                    ]
+                },{
+                  fillColor: "rgba(0,0,255,0.2)",
+                  strokeColor: "rgba(0,0,255,1)",
+                  pointColor: "rgba(0,0,255,1)",
+                  backgroundColor: "rgba(0,0,255,0.5)",
+                  label: "Negative Sentiment ",
+                  data:[
+                    {% for item in neg_values %}
+                       "{{ item }}",
+                      {% endfor %}
+                    ]
                 }
+              ]
             }
-         });
+
+           // get bar chart canvas
+           var mychart = document.getElementById("chart").getContext("2d");
+             steps = 10
+             max = 3
+           // draw bar chart
+           new Chart(mychart, {
+             type: 'bar',
+             data: chartData,
+               options: {
+                 responsive: true,
+                 maintainAspectRatio: false,
+                  scales: {
+                      xAxes: [{ stacked: true }],
+                      yAxes: [{
+                          ticks: {
+                              suggestedMin: -0.2,
+                              suggestedMax: 0.2
+                          },
+                          scaleLabel: {
+                            display: true,
+                            labelString: 'Average sentiment'
+                            }
+                      }]
+                  }
+              }
+           });
 
 
-        </script>
+           </script>
+        </div>
       </div>
+
+      <div class="carousel-item">
+        <div class="container" style="height: 500px">
+          <canvas id="line_chart"></canvas>
+            <script>
+            // bar chart data
+            var total_data = {
+              labels : [
+                {% for item in labels %}
+                 "{{ item }}",
+                {% endfor %}
+              ],
+              datasets : [{
+                fillColor: "rgba(255,0,0,0.2)",
+                strokeColor: "rgba(255,0,0,1)",
+                pointColor: "rgba(255,0,0,1)",
+                backgroundColor: "rgba(255,0,0,0.5)",
+                label: "Positive Sentiment",
+                data : [
+                  {% for item in total_search %}
+                     "{{ item }}",
+                    {% endfor %}
+                    ]
+                }]
+                }
+
+
+
+           // get bar chart canvas
+           var line_chart = document.getElementById("line_chart").getContext("2d");
+             steps = 10
+             max = 3
+           // draw bar chart
+           new Chart(line_chart, {
+             type: 'line',
+             data: total_data,
+               options: {
+                 responsive: true,
+                 maintainAspectRatio: false,
+                  scales: {
+                      xAxes: [{ stacked: true }],
+                      yAxes: [{
+                        scaleLabel: {
+                          display: true,
+                          labelString: 'Number of tweets'
+                          }
+                      }]
+                  }
+              }
+           });
+
+
+           </script>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="false"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="false"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="false"></span>
-      <span class="sr-only">Next</span>
-    </a>
+
   </div>
 
 </div>
-
-</div>
-
+<footer>
+    <a> Report a problem <br/> Give suggestions</a>
+    <a> Terms <br/> Privacy</a>
+    <a> Help </a>
+    <a> Contact us: <br/> agile.adventures2019@gmail.com </a>
+</footer>
   </body>
 </html>

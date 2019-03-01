@@ -72,3 +72,47 @@ p.SentiTweets {
     transform: none;
   }
 }
+footer {
+   position:absolute;
+   bottom:0px;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #77c4f0;
+   color: white;
+   text-align: center;
+   min-height: 50px;
+   display: flex;
+}
+
+footer a {
+  float: center;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 180px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Helvetica";
+  position: relative;
+  transform: translate(0%, 0%);
+}
+.carousel-indicators li {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+    text-indent: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #eeeeee;
+    bottom: -50px;
+}
+.carousel-item {
+    height: 550px;
+}
+.carousel-indicators .active {
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+    background-color: #484848;
+}
