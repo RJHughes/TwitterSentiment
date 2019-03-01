@@ -100,3 +100,23 @@ footer a {
   position: relative;
   transform: translate(0%, 0%);
 }
+.carousel-indicators li {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+    text-indent: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #eeeeee;
+    bottom: -50px;
+}
+.carousel-item {
+    height: 550px;
+}
+.carousel-indicators .active {
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+    background-color: #484848;
+}
