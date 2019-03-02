@@ -18,3 +18,7 @@ You can then run
 To run the site locally on localhost:5000
 
 Other dependencies for the data analysis can be installed from the requirements.txt file
+
+You can run the tests from the top level with
+
+` python -m unittest discover tests "TEST*"`
