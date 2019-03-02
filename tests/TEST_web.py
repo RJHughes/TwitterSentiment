@@ -6,11 +6,11 @@ from selenium.webdriver.chrome.options import Options
 class TwitSearch(unittest.TestCase):
     def setUp(self):
 
-        self.driver = webdriver.Chrome(s)
+        self.driver = webdriver.Chrome()
 
     def test_search_in_python_org(self):
         driver = self.driver
-        driver.get("localhost:5000")
+        driver.get("localhost:5000/search")
         #print(driver.title)
         #self.assertIn("Python", driver.title)
         elem = driver.find_element_by_id('searchForm')
