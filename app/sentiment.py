@@ -86,9 +86,10 @@ def get_sentiment(query):
 
     for items in hash_dict:
         hash_list.append([items,hash_dict[items]])
+
     print(total_search)
     print(neg_count_dict)
     print(pos_count_dict)
     print(sorted(date_list))
 
-    return date_list, pos_sentiment_list, neg_sentiment_list, total_search, hash_list
+    return sorted(date_list), pos_sentiment_list, neg_sentiment_list, total_search, hash_list
