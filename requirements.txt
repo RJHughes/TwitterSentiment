@@ -1,11 +1,49 @@
+awsebcli==3.14.11
+backcall==0.1.0
+bleach==3.1.0
+blessed==1.15.0
+botocore==1.12.92
+cached-property==1.5.1
+cement==2.8.2
+certifi==2018.11.29
+chardet==3.0.4
+Click==7.0
+colorama==0.3.9
+cycler==0.10.0
+decorator==4.3.2
+defusedxml==0.5.0
+docker==3.7.0
+docker-compose==1.23.2
+docker-pycreds==0.4.0
+dockerpty==0.4.1
+docopt==0.6.2
+docutils==0.14
+entrypoints==0.3
+Flask==1.0.2
+Flask-WTF==0.14.2
+idna==2.7
+ipykernel==5.1.0
+ipython==7.2.0
+ipython-genutils==0.2.0
+ipywidgets==7.4.2
+itsdangerous==1.1.0
+jedi==0.13.2
+Jinja2==2.10
+jmespath==0.9.3
+jsonschema==2.6.0
+jupyter==1.0.0
+jupyter-client==5.2.4
+jupyter-console==6.0.0
+jupyter-core==4.4.0
+kiwisolver==1.0.1
+MarkupSafe==1.1.0
+matplotlib==3.0.2
+mistune==0.8.4
+nbconvert==5.4.0
+nbformat==4.4.0
+nltk==3.4
+notebook==5.7.4
 numpy==1.16.1
-<<<<<<< HEAD
-<<<<<<< HEAD
-Pillow==5.4.1
-wordcloud==1.5.0
-=======
-=======
->>>>>>> ddbe4b8c81ceaec9e58ee14d7704580cea0efa32
 oauthlib==3.0.1
 pandas==0.24.0
 pandocfilters==1.4.2
@@ -50,7 +88,3 @@ Werkzeug==0.14.1
 widgetsnbextension==3.4.2
 wordcloud==1.5.0
 WTForms==2.2.1
-<<<<<<< HEAD
->>>>>>> cb290e16b352ff4310dc58ff5fe070a078c0a579
-=======
->>>>>>> ddbe4b8c81ceaec9e58ee14d7704580cea0efa32
