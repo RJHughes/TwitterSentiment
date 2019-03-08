@@ -33,7 +33,7 @@ def search():
     # Hashtag list from search
     hash_list = []
     # Image handle to allow unique images
-    img_handle=[]
+    img_handle="_default"
     # Default search
     search=' '
     # Init form object
