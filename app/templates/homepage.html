@@ -32,10 +32,13 @@
 
 
 </div>
-<img src="static/pictures/welcomeimage2.png" align="center" alt="Welcome image"/>
+
+<h1 class="display-2" style="text-align: center; padding: 100px 0 15px;">Welcome</h1>
+<h2 class="display-5" style="text-align: center; padding: 0px 0 30px;">Glad you're here!</h2>
+
 <div class="container pt-4">
   <form role ="form", class="form-horizontal", action="" method="post" role="form" novalidate>
-      <h5>SentiTweets is a sentiment analysis tool that generates insightful graphs of Twitter data for a given word or phrase.</h5>
+      <h5 style="padding-bottom:5px">SentiTweets is a sentiment analysis tool that generates insightful graphs of Twitter data for a given word or phrase.</h5>
 
     {{ form.hidden_tag() }}
     <div class="form-row">
@@ -48,12 +51,19 @@
 
     </div>
       <p align="center">
-        <a href="/search"><button type="button" align="center" class= "btn btn-primary">further search</button> </a>
+        <a href="/search"><button type="button" align="center" class= "btn btn-primary">Advanced search</button> </a>
         <!--<button type="submit"  class="btn btn-primary" href="/Users/alyaaalharbi/Desktop/SD/TwitterSentiment/app/templates/index.html">Further Search</button> -->
         </p>
   </form>
 </div>
 
+<footer style="position:absolute; bottom:0;">
+    <a> Report a problem <br/> Give suggestions</a>
+    <a> Terms <br/> Privacy</a>
+    <a> Help </a>
+    <a> Contact us: <br/> agile.adventures2019@gmail.com </a>
+</footer>
+  </body>
 
   </body>
 </html>
