@@ -31,8 +31,8 @@
   </div>
 
   <!-- Left-aligned links (default) -->
-  <a href="/">Home</a>
-
+  <a style="float:left" href="/">Home</a>
+  <a style="float:right"href="/help">Help</a>
 </div>
 
 <!-- Search fields -->
@@ -129,7 +129,7 @@
            <h4 class="card-title">Hashtag Wordcloud</h4>
            <p>This wordcloud show the hashtags that were tweeted in your search.
               Larger words mean that the hashtag was tweeted more often.</p>
-        <div class="container" style="width:100%;height="400">
+        <div class="container" style="width:100%;height=400">
           <img src ="{{"static/pictures/wordcloud" ~ handle ~".png"}}" style="width: 75%;" alt=wordcloud>
         </div>
       </div>
@@ -148,6 +148,7 @@
               <div class="container-fluid" style="width:100%">
                 <canvas id="chart" width="800" height="400" style="display:block; margin-left:auto; margin-right:auto;"></canvas>
                  <script>
+
                 // bar chart data
                 var chartData = {
                   labels : [
