@@ -129,8 +129,8 @@
            <h4 class="card-title">Hashtag Wordcloud</h4>
            <p>This wordcloud show the hashtags that were tweeted in your search.
               Larger words mean that the hashtag was tweeted more often.</p>
-        <div class="container">
-          <img src ="{{"static/pictures/wordcloud" ~ handle ~".png"}}" style="width: 100%;" alt=wordcloud>
+        <div class="container" style="width:100%;height="400">
+          <img src ="{{"static/pictures/wordcloud" ~ handle ~".png"}}" style="width: 75%;" alt=wordcloud>
         </div>
       </div>
     </div>
@@ -147,68 +147,68 @@
              <p>This chart shows the average positive and negative sentiment on each day for your search.</p>
               <div class="container-fluid" style="width:100%">
                 <canvas id="chart" width="800" height="400" style="display:block; margin-left:auto; margin-right:auto;"></canvas>
-            <script>
-            // bar chart data
-            var chartData = {
-              labels : [
-                {% for item in labels %}
-                 "{{ item }}",
-                {% endfor %}
-              ],
-              datasets : [{
-                fillColor: "rgba(255,0,0,0.2)",
-                strokeColor: "rgba(255,0,0,1)",
-                pointColor: "rgba(255,0,0,1)",
-                backgroundColor: "rgba(255,0,0,0.5)",
-                label: "Positive Sentiment",
-                data : [
-                  {% for item in pos_values %}
+                 <script>
+                // bar chart data
+                var chartData = {
+                  labels : [
+                    {% for item in labels %}
                      "{{ item }}",
                     {% endfor %}
-                    ]
-                },{
-                  fillColor: "rgba(0,0,255,0.2)",
-                  strokeColor: "rgba(0,0,255,1)",
-                  pointColor: "rgba(0,0,255,1)",
-                  backgroundColor: "rgba(0,0,255,0.5)",
-                  label: "Negative Sentiment ",
-                  data:[
-                    {% for item in neg_values %}
-                       "{{ item }}",
-                      {% endfor %}
-                    ]
+                  ],
+                  datasets : [{
+                    fillColor: "rgba(255,0,0,0.2)",
+                    strokeColor: "rgba(255,0,0,1)",
+                    pointColor: "rgba(255,0,0,1)",
+                    backgroundColor: "rgba(255,0,0,0.5)",
+                    label: "Positive Sentiment",
+                    data : [
+                      {% for item in pos_values %}
+                         "{{ item }}",
+                        {% endfor %}
+                        ]
+                    },{
+                      fillColor: "rgba(0,0,255,0.2)",
+                      strokeColor: "rgba(0,0,255,1)",
+                      pointColor: "rgba(0,0,255,1)",
+                      backgroundColor: "rgba(0,0,255,0.5)",
+                      label: "Negative Sentiment ",
+                      data:[
+                        {% for item in neg_values %}
+                           "{{ item }}",
+                          {% endfor %}
+                        ]
+                    }
+                  ]
                 }
-              ]
-            }
 
-           // get bar chart canvas
-           var mychart = document.getElementById("chart").getContext("2d");
-             steps = 10
-             max = 3
-           // draw bar chart
-           new Chart(mychart, {
-             type: 'bar',
-             data: chartData,
-               options: {
-                 responsive: true,
-                 maintainAspectRatio: false,
-                  scales: {
-                      xAxes: [{ stacked: true }],
-                      yAxes: [{
-                          ticks: {
-                              suggestedMin: -0.2,
-                              suggestedMax: 0.2
-                          },
-                          scaleLabel: {
-                            display: true,
-                            labelString: 'Average sentiment'
-                            }
-                      }]
+               // get bar chart canvas
+               var mychart = document.getElementById("chart").getContext("2d");
+                 steps = 10
+                 max = 3
+               // draw bar chart
+               new Chart(mychart, {
+                 type: 'bar',
+                 data: chartData,
+                   options: {
+                     responsive: true,
+                     maintainAspectRatio: false,
+                      scales: {
+                          xAxes: [{ stacked: true }],
+                          yAxes: [{
+                              ticks: {
+                                  suggestedMin: -0.2,
+                                  suggestedMax: 0.2
+                              },
+                              scaleLabel: {
+                                display: true,
+                                labelString: 'Average sentiment'
+                                }
+                          }]
+                      }
                   }
-              }
-           });
+               });
 
-           </script>
+               </script>
               </div>
             </div>
           </div>
