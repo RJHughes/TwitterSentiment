@@ -14,6 +14,9 @@ import os
 
 application = Flask(__name__)
 application.config['SECRET_KEY'] = 'agile'
+@application.route('/help')
+def help():
+    return render_template('helpPage.html')
 
 @application.route('/',methods=['GET', 'POST'])
 def home():
