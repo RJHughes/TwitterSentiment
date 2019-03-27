@@ -2,13 +2,13 @@
 
 [![Build Status](https://travis-ci.com/RJHughes/TwitterSentiment.svg?branch=master)](https://travis-ci.com/RJHughes/TwitterSentiment)
 
-To run the app, you'll need to have flask available in your environment. 
+To run the app, you'll need to get the dependencies from the requirements.txt file
 
 I'd suggest making a new virtualenv and running 
 
 `pip install -r requirements.txt`
 
-If you then navigate to the TwitterSentiment folder you need to set the FLASK_APP environemtn variable. Run the below command
+If you then navigate to the TwitterSentiment folder you need to set the FLASK_APP environment variable. Run the below command
 `export FLASK_APP=app/application.py`
 
 You can then run
@@ -17,7 +17,6 @@ You can then run
 
 To run the site locally on localhost:5000
 
-Other dependencies for the data analysis can be installed from the requirements.txt file
 
 You can run the tests from the top level with
 
